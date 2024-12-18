@@ -18,6 +18,7 @@ return new class extends Migration
             $table->date('tanggal_respon');
             $table->text('respon');
             $table->foreign('id_pengaduan')->on('pengaduan')->references('id')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_user')->on('users')->references('id')->onDelete('cascade')->onUpdate('cascade');
             $table->string('slug')->unique();
             $table->timestamps();
         });

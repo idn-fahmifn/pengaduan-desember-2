@@ -11,13 +11,17 @@
   <!-- The above 6 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
   <!-- Title -->
-  <title>Circl - Responsive Admin Dashboard Template</title>
+  <title>IDN - Pengaduan</title>
 
   <!-- Styles -->
   <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,700,800&display=swap" rel="stylesheet">
   <link href="{{asset('assets/plugins/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
   <link href="{{asset('assets/plugins/font-awesome/css/all.min.css')}}" rel="stylesheet">
   <link href="{{asset('assets/plugins/perfectscroll/perfect-scrollbar.css')}}" rel="stylesheet">
+
+  <!-- datatable -->
+  <link href="{{asset('assets/plugins/DataTables/datatables.min.css')}}" rel="stylesheet">
+
 
 
   <!-- Theme Styles -->
@@ -171,8 +175,8 @@
 
     <div class="page-content">
       <div class="main-wrapper">
+        @yield('content')
       </div>
-
     </div>
 
   </div>
@@ -184,6 +188,10 @@
   <script src="https://unpkg.com/feather-icons"></script>
   <script src="{{asset('assets/plugins/perfectscroll/perfect-scrollbar.min.js')}}"></script>
   <script src="{{asset('assets/js/main.min.js')}}"></script>
+
+  <!-- js datatable -->
+  <script src="{{asset('assets/plugins/DataTables/datatables.min.js')}}"></script>
+  <script src="{{asset('assets/js/pages/datatables.js')}}"></script>
 </body>
 
 </html>
