@@ -19,6 +19,8 @@ return new class extends Migration
             $table->date('tanggal_lahir');
             $table->enum('gender', ['pria', 'wanita']);
             $table->string('alamat');
+            $table->string('slug')->unique();
+
 
             // relasi table.
             $table->foreign('id_user')->on('users')->references('id')->onDelete('cascade')->onUpdate('cascade');

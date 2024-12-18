@@ -11,14 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('respon', function (Blueprint $table) {
+        Schema::create('pengumuman', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_pengaduan');
-            $table->unsignedBigInteger('id_user'); //admin yang menanggapi.
-            $table->date('tanggal_respon');
-            $table->text('respon');
-            $table->foreign('id_pengaduan')->on('pengaduan')->references('id')->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedBigInteger('id_user'); //authors
+            $table->string('judul_pengumuman');
+            $table->string('thumbnail');
+            $table->date('tanggal');
+            $table->text('pengumuman');
             $table->string('slug')->unique();
+
+            $table->foreign('id_user')->on('users')->references('id')->onDelete('cascade')->onUpdate('cascade');
+
             $table->timestamps();
         });
     }
@@ -28,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('respon');
+        Schema::dropIfExists('pengumuman');
     }
 };

@@ -20,6 +20,7 @@ return new class extends Migration
             $table->date('tanggal_pengaduan');
             $table->text('keterangan');
             $table->foreign('id_user')->on('users')->references('id')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('slug')->unique();
             $table->timestamps();
         });
     }
