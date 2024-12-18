@@ -42,20 +42,18 @@
             <li class="nav-item">
               <a class="nav-link" id="sidebar-toggle" href="#"><i data-feather="arrow-left"></i></a>
             </li>
+
             <li class="nav-item">
-              <a class="nav-link" href="#">Home</a>
+              <div class="logo">
+                <a href="{{route('dashboard')}}">
+                  <img src="https://www.idn.id/storage/2022/11/LOGO-ID-Networkers-IDN.ID_.png" width="150" alt="Logo Aplikasi">
+                </a>
+              </div>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Settings</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Help</a>
-            </li>
+
           </ul>
         </div>
-        <div class="logo">
-          <a class="navbar-brand" href="index.html"></a>
-        </div>
+
         <div class="" id="headerNav">
           <ul class="navbar-nav">
             <li class="nav-item dropdown">
@@ -159,16 +157,16 @@
         </div>
       </nav>
     </div>
-    
+
     <!-- area sidebar -->
 
     @if (Auth::check() && Auth::user()->is_admin)
     <!-- jika Admin -->
-     @include('template.menu-admin')
+    @include('template.menu-admin')
 
-     @else
-     @include('template.menu-user')
-    
+    @else
+    @include('template.menu-user')
+
     @endif
 
     <div class="page-content">
