@@ -3,6 +3,7 @@
 use App\Http\Controllers\DivisiController;
 use App\Http\Controllers\PengaduanController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ResponController;
 use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Support\Facades\Route;
 
@@ -24,6 +25,7 @@ Route::middleware(['auth', AdminMiddleware::class])->prefix('admin')->group(func
     })->middleware('verified')->name('dashboard');
 
     Route::resource('divisi', DivisiController::class);
+    Route::resource('respon', ResponController::class);
 });
 
 // Route User

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pengaduan;
 use App\Models\Respon;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,8 @@ class ResponController extends Controller
      */
     public function index()
     {
-        //
+        $data = Pengaduan::all();
+        return view('admin.respon.index', compact('data'));
     }
 
     /**
@@ -34,9 +36,11 @@ class ResponController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Respon $respon)
+    public function show($id)
     {
-        //
+        $data = Pengaduan::find($id);
+        $respon = Respon::where('id_pengaduan', $id)->get()->all();
+        return view('admin.respon.detail', compact('data', 'respon'));
     }
 
     /**
