@@ -35,7 +35,7 @@ class PengaduanController extends Controller
         //validasti data
         $request->validate([
             'judul' => 'required|min:3|max:30|string',
-            'dokumentasi' => 'required|max:5048|mimes:jpg, jpeg, png',
+            'dokumentasi' => 'required|max:5048',
             'keterangan' => 'required',
         ]);
 
@@ -43,7 +43,6 @@ class PengaduanController extends Controller
 
         // tanggal dibuat
         Carbon::setLocale('id');
-        $tanggal_indo = Carbon::now()->isoFormat('dddd, D MMMM YYYY');
 
         // dokumentasi
         if($request->hasFile('dokumentasi'))
@@ -56,9 +55,10 @@ class PengaduanController extends Controller
             // value database
             $input['dokumentasi'] = $nama;
         }
+        
 
         $input['slug'] = Carbon::now()->format('Ymd_His').Str::slug($request->judul).random_int(000000,999999);
-        $input['tanggal_pengaduan'] = Carbon::now()->format('Y-m-d');
+        $input['tanggal_pengaduan'] = Carbon::now()->format('Ymdhis');
         // simpan ke model
         Pengaduan::create($input);
 

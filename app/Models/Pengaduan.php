@@ -9,6 +9,8 @@ class Pengaduan extends Model
     protected $table = 'pengaduan';
     protected $guarded;
 
+    protected $casts = ['created_at' => 'date'];
+
     public function user()
     {
         return $this->belongsTo(User::class, 'id_user');

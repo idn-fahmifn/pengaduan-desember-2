@@ -48,7 +48,7 @@
                         <tr>
                             <td>{{$item->judul}}</td>
                             <td>{{$item->status}}</td>
-                            <td>{{$item->tanggal_pengaduan}}</td>
+                            <td>{{$item->created_at->locale('id_ID')->diffForHumans()}}</td>
                             <td>
                                 <form action="{{route('pengaduan.destroy', $item->slug)}}" method="post">
                                     @csrf
