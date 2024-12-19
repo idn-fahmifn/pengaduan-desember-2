@@ -63,17 +63,19 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalCenterTitle">Tambah Data Divisi</h5>
+                <h5 class="modal-title" id="exampleModalCenterTitle">Edit Divisi</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
-            <form action="{{route('divisi.store')}}" method="post">
+            <form action="{{route('divisi.update', $data->slug)}}" method="post">
                 @csrf
+                @method('put')
                 <div class="modal-body">
                     <!-- form -->
                     <div class="form-group">
                         <label class="form-label">Nama divisi</label>
-                        <input type="text" name="nama_divisi" required class="form-control form-lg" placeholder="Masukan nama divisi">
+                        <input type="text" name="nama_divisi" value="{{$data->nama_divisi}}" required class="form-control form-lg">
+                        <input type="number" value="{{$data->id}}" name="id" hidden>
                     </div>
                 </div>
                 <div class="modal-footer">

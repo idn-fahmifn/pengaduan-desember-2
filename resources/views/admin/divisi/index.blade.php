@@ -46,22 +46,16 @@
                         <tr>
                             <td>{{$item->nama_divisi}}</td>
                             <td>
-                                <form action="#" method="post">
+                                <form action="{{route('divisi.destroy', $item->slug)}}" method="post">
                                     @csrf
                                     @method('delete')
-                                    <button type="submit" class="btn text-danger rounded"><i data-feather="trash-2"></i></button>
+                                    <button type="submit" class="btn text-danger rounded" onclick="return confirm('Yakin mau dihapus?')"><i data-feather="trash-2"></i></button>
                                     <a href="{{route('divisi.show', $item->slug)}}" class="btn text-info"><i data-feather="info"></i></a>
                                 </form>
                             </td>
                         </tr>
                         @endforeach
                     </tbody>
-                    <tfoot>
-                        <tr>
-                            <th>Nama Divisi</th>
-                            <th>Pilihan</th>
-                        </tr>
-                    </tfoot>
                 </table>
             </div>
         </div>

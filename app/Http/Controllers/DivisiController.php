@@ -42,13 +42,6 @@ class DivisiController extends Controller
         // simpan ke divisi
         Divisi::create($data);
         return back()->with('success', 'Data divisi berhasil dibuat');
-
-
-
-
-
-
-
     }
 
     /**
@@ -71,16 +64,27 @@ class DivisiController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Divisi $divisi)
+    public function update(Request $request)
     {
-        //
+        //validasti data
+        $request->validate([
+            'nama_divisi' => 'required|min:3|max:30|string'
+        ]);
+        
+        $data = Divisi::find($request->id);
+
+        $data->update([
+            'nama_divisi' => $request->nama_divisi,
+            'slug' => Carbon::now()->format('Ymd_His').Str::slug($request->nama_divisi).random_int(000000,999999)
+        ]);
+        return redirect()->route('divisi.index')->with('success', 'Data berhasil diubah');
+        
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Divisi $divisi)
     {
-        //
+        $data = Divisi::find($divisi->id);
+        $data->delete();
+        return back()->with('success', 'Data berhasil Terhapus');
     }
 }
