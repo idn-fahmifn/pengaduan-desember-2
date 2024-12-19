@@ -46,7 +46,7 @@
                     <tbody>
                         @foreach ($data as $item)
                         <tr>
-                            <td>{{$item->judul_pengaduan}}</td>
+                            <td>{{$item->judul}}</td>
                             <td>{{$item->status}}</td>
                             <td>{{$item->tanggal_pengaduan}}</td>
                             <td>

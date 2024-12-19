@@ -15,7 +15,7 @@ class PengaduanController extends Controller
      */
     public function index()
     {
-        $data = Pengaduan::where('id_user', Auth::user()->id);
+        $data = Pengaduan::where('id_user', Auth::user()->id)->get();
         return view('user.pengaduan.index', compact('data'));
     }
 
@@ -60,9 +60,7 @@ class PengaduanController extends Controller
         $input['slug'] = Carbon::now()->format('Ymd_His').Str::slug($request->judul).random_int(000000,999999);
         $input['tanggal_pengaduan'] = Carbon::now()->format('Y-m-d');
         // simpan ke model
-
         Pengaduan::create($input);
-
 
         return back()->with('success', 'Data divisi berhasil dibuat');
     }
