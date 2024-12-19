@@ -10,7 +10,7 @@ class Divisi extends Model
     protected $guarded;
 
 
-    public function getKeyName()
+    public function getRouteKeyName()
     {
         return 'slug';
     }

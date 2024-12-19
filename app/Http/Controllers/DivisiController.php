@@ -56,7 +56,8 @@ class DivisiController extends Controller
      */
     public function show(Divisi $divisi)
     {
-        //
+        $data = $divisi;
+        return view('admin.divisi.detail', compact('data'));
     }
 
     /**
