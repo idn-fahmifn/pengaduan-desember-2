@@ -58,11 +58,13 @@ class PengaduanController extends Controller
         }
 
         $input['slug'] = Carbon::now()->format('Ymd_His').Str::slug($request->judul).random_int(000000,999999);
-        $input['tanggal_pengaduan'] = $tanggal_indo;
+        $input['tanggal_pengaduan'] = Carbon::now()->format('Y-m-d');
         // simpan ke model
 
-        return $input;
-        // return back()->with('success', 'Data divisi berhasil dibuat');
+        Pengaduan::create($input);
+
+
+        return back()->with('success', 'Data divisi berhasil dibuat');
     }
 
     /**
