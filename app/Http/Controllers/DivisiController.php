@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Divisi;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Carbon\Carbon;
 
 class DivisiController extends Controller
 {
@@ -12,7 +14,8 @@ class DivisiController extends Controller
      */
     public function index()
     {
-        return view('admin.divisi.index');
+        $data = Divisi::all();
+        return view('admin.divisi.index', compact('data'));
     }
 
     /**
@@ -28,7 +31,24 @@ class DivisiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //validasti data
+        $request->validate([
+            'nama_divisi' => 'required|min:3|max:30|string'
+        ]);
+
+        $data = $request->all();
+        $data['slug'] = Carbon::now()->format('Ymd_His').Str::slug($request->nama_divisi).random_int(000000,999999);
+
+        // simpan ke divisi
+        Divisi::create($data);
+        return back()->with('success', 'Data divisi berhasil dibuat');
+
+
+
+
+
+
+
     }
 
     /**

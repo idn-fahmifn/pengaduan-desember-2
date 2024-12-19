@@ -15,6 +15,26 @@
                     </button>
                 </div>
                 <p>Data Semua Divisi</p>
+
+                @if (session('success'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>Berhasil!</strong> {{session('success')}}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                @endif
+
+                @if ($errors->any())
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>Whoops!</strong>
+                    @foreach ($errors->all() as $item)
+                    <ol>
+                        <li>{{$item}}</li>
+                    </ol>
+                    @endforeach
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                @endif
+
                 <table id="zero-conf" class="display" style="width:100%">
                     <thead>
                         <tr>
@@ -23,7 +43,19 @@
                         </tr>
                     </thead>
                     <tbody>
-
+                        @foreach ($data as $item)
+                        <tr>
+                            <td>{{$item->nama_divisi}}</td>
+                            <td>
+                                <form action="#" method="post">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="submit" class="btn text-danger rounded"><i data-feather="trash-2"></i></button>
+                                    <a href="" class="btn text-info"><i data-feather="info"></i></a>
+                                </form>
+                            </td>
+                        </tr>
+                        @endforeach
                     </tbody>
                     <tfoot>
                         <tr>
@@ -46,13 +78,21 @@
                 <h5 class="modal-title" id="exampleModalCenterTitle">Tambah Data Divisi</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-                Woohoo, you're reading this text in a modal!
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
+
+            <form action="{{route('divisi.store')}}" method="post">
+                @csrf
+                <div class="modal-body">
+                    <!-- form -->
+                    <div class="form-group">
+                        <label class="form-label">Nama divisi</label>
+                        <input type="text" name="nama_divisi" required class="form-control form-lg" placeholder="Masukan nama divisi">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

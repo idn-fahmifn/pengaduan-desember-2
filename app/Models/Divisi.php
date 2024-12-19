@@ -6,5 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Divisi extends Model
 {
-    //
+    protected $table = 'divisi';
+    protected $guarded;
+
+
+    public function getKeyName()
+    {
+        return 'slug';
+    }
 }
