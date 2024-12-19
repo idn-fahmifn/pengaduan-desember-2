@@ -22,6 +22,9 @@
   <!-- datatable -->
   <link href="{{asset('assets/plugins/DataTables/datatables.min.css')}}" rel="stylesheet">
 
+  <!-- summernote -->
+  <link href="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote.min.css" rel="stylesheet">
+
 
 
   <!-- Theme Styles -->
@@ -72,7 +75,7 @@
                 <a class="dropdown-item" href="#"><i data-feather="unlock"></i>Lock</a>
                 <a class="dropdown-item" href="{{route('logout')}}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();"><i data-feather="log-out"></i>Logout</a>
-                                                     
+
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                   @csrf
                 </form>
@@ -110,10 +113,21 @@
   <script src="https://unpkg.com/feather-icons"></script>
   <script src="{{asset('assets/plugins/perfectscroll/perfect-scrollbar.min.js')}}"></script>
   <script src="{{asset('assets/js/main.min.js')}}"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
   <!-- js datatable -->
   <script src="{{asset('assets/plugins/DataTables/datatables.min.js')}}"></script>
   <script src="{{asset('assets/js/pages/datatables.js')}}"></script>
+
+  <!-- summernote -->
+  <script src="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote.min.js"></script>
+
+  <script>
+    $(document).ready(function() {
+        $('#summernote').summernote();
+    });
+  </script>
+
 </body>
 
 </html>

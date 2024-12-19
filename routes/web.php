@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DivisiController;
+use App\Http\Controllers\PengaduanController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Support\Facades\Route;
@@ -30,6 +31,9 @@ Route::middleware('auth')->prefix('user')->group(function () {
     Route::get('/home', function () {
         return view('home');
     })->name('dashboard.user');
+
+    Route::resource('pengaduan', PengaduanController::class);
+
 });
 
 
