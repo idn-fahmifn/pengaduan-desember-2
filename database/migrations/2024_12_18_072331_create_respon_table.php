@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('id_pengaduan');
             $table->unsignedBigInteger('id_user'); //admin yang menanggapi.
-            $table->date('tanggal_respon');
+            $table->dateTime('tanggal_respon');
             $table->text('respon');
             $table->foreign('id_pengaduan')->on('pengaduan')->references('id')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('id_user')->on('users')->references('id')->onDelete('cascade')->onUpdate('cascade');

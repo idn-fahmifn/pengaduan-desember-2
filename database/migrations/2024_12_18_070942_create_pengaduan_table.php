@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('judul');
             $table->string('dokumentasi');
             $table->enum('status', ['pending', 'diproses', 'selesai', 'ditolak'])->default('pending');
-            $table->date('tanggal_pengaduan');
+            $table->dateTime('tanggal_pengaduan');
             $table->text('keterangan');
             $table->foreign('id_user')->on('users')->references('id')->onDelete('cascade')->onUpdate('cascade');
             $table->string('slug')->unique();

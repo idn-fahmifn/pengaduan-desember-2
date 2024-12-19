@@ -9,7 +9,7 @@ class Pengaduan extends Model
     protected $table = 'pengaduan';
     protected $guarded;
 
-    protected $casts = ['created_at' => 'date'];
+    protected $casts = ['created_at' => 'datetime'];
 
     public function user()
     {
